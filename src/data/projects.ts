@@ -3,134 +3,265 @@ import type { Project } from '@/types';
 /**
  * Selected projects shown on the homepage and case-study pages.
  *
- * Static content for the site. Edit this file to change what is displayed —
- * no database or backend required.
+ * Static content for the site. Edit this file to change what is displayed.
+ * No database or backend required.
  */
 
 export const PROJECTS: Project[] = [
     {
-        "id": 5,
-        "title": "SACCO — Savings and Credit Cooperative Organization",
-        "slug": "sacco",
-        "category": "Fintech",
-        "short_description": "A democratic financial institution owned and run entirely by its members.",
-        "description": "SACCO Management system makes users manage their finance, done with a single fast, reliable system built with Springboot, react and postgresql.",
-        "problem": "Savings and credit cooperatives traditionally rely on manual record-keeping, paper-based transactions, and fragmented spreadsheets. This leads to errors in member accounts, delayed loan processing, and difficulty generating financial reports — limiting the cooperative's ability to serve its members efficiently.",
-        "solution": "A centralised web-based management system that digitises member registration, savings tracking, loan applications, and repayment schedules. The platform provides real-time dashboards for administrators and transparent account views for members, replacing manual workflows with automated, auditable processes.",
-        "my_role": "Led full-stack development — designed the relational database schema, implemented the Spring Boot REST API layer, built the React frontend with role-based access control, and integrated PostgreSQL for reliable financial data storage.",
-        "highlights": [
-            "Member registration and profile management",
-            "Savings deposit and withdrawal tracking",
-            "Loan application and approval workflow",
-            "Repayment schedule management",
-            "Role-based access control (admin, member)",
-            "Financial reporting dashboard"
+        id: 1,
+        title: 'Urban Beautification and Green Development System',
+        slug: 'urban-beautification-green-development',
+        category: 'Government & Public Services',
+
+        short_description:
+            'A centralized digital system for managing urban greenery, beautification activities, and environmental development operations.',
+
+        description:
+            'The Urban Beautification and Green Development System (UBGDS) is a web-based management platform designed to digitize and coordinate urban beautification and green development activities. It supports structured management of green assets, development activities, operational workflows, and administrative reporting.',
+
+        problem:
+            'Managing urban greenery and beautification activities across multiple administrative levels can involve fragmented records, manual reporting, and limited visibility into operational progress. These challenges make it difficult to coordinate activities, monitor green assets, assign responsibilities, and maintain consistent records.',
+
+        solution:
+            'A centralized web-based management system that organizes urban green development operations, administrative structures, green assets, work activities, and reporting. The platform provides a structured digital environment for managing information, coordinating responsibilities, and improving operational visibility.',
+
+        my_role:
+            'Contributed to full-stack development using Laravel, React, TypeScript, and Inertia.js. Worked on application interfaces, backend functionality, database integration, and administrative modules to support the digitization of urban beautification and green development workflows.',
+
+        highlights: [
+            'Administrative and organizational management',
+            'User, role, and permission management',
+            'Green asset and development category management',
+            'Operational activity and work order management',
+            'Cemetery and maintenance-related workflows',
+            'Reporting and administrative dashboards',
+            'QR-based reporting functionality',
+            'Relational database management with MySQL'
         ],
-        "architecture_notes": "React SPA communicating with a Spring Boot REST API. PostgreSQL handles transactional financial data with foreign-key constraints ensuring referential integrity. JWT-based authentication secures all endpoints.",
-        "technologies": [
-            "Spring Boot",
-            "React",
-            "PostgreSQL"
+
+        architecture_notes:
+            'A Laravel application with React and TypeScript interfaces connected through Inertia.js. MySQL provides relational data storage, while Laravel manages server-side application logic, database operations, and access control.',
+
+        technologies: [
+            'Laravel',
+            'React',
+            'TypeScript',
+            'Inertia.js',
+            'MySQL',
+            'Tailwind CSS'
         ],
-        "image": "/images/projects/sacco.webp",
-        "github_url": "https://github.com/mfop2o/sacco-management-system",
-        "live_url": "https://sacco.lovestoblog.com/login",
-        "featured": true,
-        "sort_order": 1
+
+        image: '/images/projects/ubgd.png',
+        github_url: null,
+        live_url: null,
+
+        featured: true,
+        sort_order: 1
     },
+
     {
-        "id": 6,
-        "title": "Agribridge",
-        "slug": "agribridge",
-        "category": "Business System",
-        "short_description": "A platform connecting farmers to buyers, with listings, messaging and deal management.",
-        "description": "Agribridge closes the gap between producers and buyers. The platform handles product listings, negotiation and order flow, with a clean React interface and a Laravel API built for scale.",
-        "problem": "Ethiopian agricultural producers often struggle to reach buyers directly, relying on intermediaries who take large margins. There is no centralised digital platform where farmers can list products, negotiate prices, and manage orders — resulting in inefficient trade and reduced farmer income.",
-        "solution": "A digital marketplace that connects farmers directly with buyers through organised product listings, real-time messaging, and structured deal management. The platform streamlines the entire trade flow from listing to order confirmation, reducing dependency on middlemen.",
-        "my_role": "Designed and developed the full application — Laravel backend with Inertia.js for server-driven routing, React/TypeScript frontend, MySQL database schema, and the complete product listing and order management workflow.",
-        "highlights": [
-            "Product listing with categories and pricing",
-            "Buyer-seller messaging system",
-            "Order negotiation and deal tracking",
-            "Search and filter by crop type and region",
-            "User authentication and profile management",
-            "Responsive design for mobile access"
+        id: 2,
+        title: 'AI-Powered Digital Lending Platform',
+        slug: 'ai-powered-digital-lending',
+        category: 'AI & Fintech',
+
+        short_description:
+            'A digital lending solution designed to streamline loan applications, financial data processing, and AI-assisted lending decisions.',
+
+        description:
+            'The AI-Powered Digital Lending Platform explores how artificial intelligence and modern web technologies can improve digital lending workflows. It combines a React and TypeScript frontend with Django, Spring Boot, and Supabase to support application functionality, backend services, and data management.',
+
+        problem:
+            'Traditional lending processes can involve lengthy application procedures, manual document reviews, fragmented financial information, and time-consuming credit assessments. These challenges can make access to financial services more difficult and reduce the efficiency of lending institutions.',
+
+        solution:
+            'A digital lending platform designed to organize loan application workflows and support more efficient financial information processing. Its AI-oriented approach can help assess relevant applicant information and provide decision support, while lending approval remains subject to the platform’s implemented rules and review process.',
+
+        my_role:
+            'Worked on full-stack development using React, JavaScript, TypeScript, Django, Supabase, and Spring Boot. The project brings together frontend application development, backend services, data integration, and an AI-focused approach to digital financial services.',
+
+        highlights: [
+            'Digital loan application workflows',
+            'Applicant information management',
+            'Financial data integration',
+            'Backend services using Django and Spring Boot',
+            'Supabase-based data and application integration',
+            'AI-oriented lending assessment and decision support',
+            'Structured lending information management',
+            'Modern, responsive user interfaces'
         ],
-        "architecture_notes": "Laravel monolith with Inertia.js providing SPA-like navigation without a separate API layer. React/TypeScript frontend with Tailwind CSS. MySQL database with Eloquent ORM for product, user, and order models.",
-        "technologies": [
-            "Laravel",
-            "React",
-            "TypeScript",
-            "MySQL",
-            "Inertia"
+
+        architecture_notes:
+            'The frontend uses React and TypeScript. Django and Spring Boot provide backend application services, while Supabase supports data and platform integration. The precise division of responsibilities between the backend services and the AI components depends on the implemented application architecture.',
+
+        technologies: [
+            'React',
+            'JavaScript',
+            'TypeScript',
+            'Django',
+            'Supabase',
+            'Spring Boot'
         ],
-        "image": "/images/projects/agribridge.webp",
-        "github_url": "https://github.com/mfop2o/agribridge",
-        "live_url": "https://bontu.lovestoblog.com/login",
-        "featured": true,
-        "sort_order": 2
+
+        image: '/images/projects/faris.png',
+        github_url: null,
+        live_url: null,
+
+        featured: true,
+        sort_order: 2
     },
+
     {
-        "id": 7,
-        "title": "Oromo Traditional Food Hub",
-        "slug": "oromo-traditional-food",
-        "category": "Web Platform",
-        "short_description": "This platform makes users learn oromo traditional foods procedure by using the recipes on this platform.",
-        "description": "This platform manages, organizes and promotes different oromo traditional foods by regions with its respective recipes.",
-        "problem": "Traditional Oromo food recipes are passed down orally and risk being lost as younger generations urbanise. There is no organised digital resource where people can discover, learn, and preserve these culturally significant recipes by region.",
-        "solution": "A web platform that catalogues Oromo traditional foods organised by region, with step-by-step recipes, ingredient lists, and cultural context. Users can browse, search, and learn cooking procedures through a clean, accessible interface.",
-        "my_role": "Built the full application from concept to deployment — designed the database schema for recipe and region management, implemented the Node.js backend API, and developed the React/TypeScript frontend with responsive layouts.",
-        "highlights": [
-            "Recipe catalogue organised by region",
-            "Step-by-step cooking procedures",
-            "Ingredient lists with quantities",
-            "Search and filter by food type and region",
-            "Cultural context and food history",
-            "Mobile-responsive design"
+        id: 3,
+        title: 'Ethio Innovation Software Development Company Website',
+        slug: 'ethio-innovation-company-website',
+        category: 'Corporate Website',
+
+        short_description:
+            'A professional corporate website designed to present a software development company, its services, capabilities, and digital solutions.',
+
+        description:
+            'A corporate web platform for Ethio Innovation Software Development Company, built to establish a professional online presence and communicate the company’s technology services, capabilities, and business identity. The application uses Laravel, React, TypeScript, Inertia.js, and MySQL.',
+
+        problem:
+            'Technology companies need a professional digital presence to explain their services, communicate their expertise, build credibility, and help prospective customers understand how their solutions address business needs.',
+
+        solution:
+            'A responsive corporate website that organizes company information, service offerings, and business content into a clear, accessible interface. Its full-stack architecture supports structured content management and future website enhancements.',
+
+        my_role:
+            'Contributed to full-stack website development using Laravel, React, TypeScript, and Inertia.js. Worked across the frontend and backend, integrating application functionality with MySQL and building a maintainable foundation for the company’s digital presence.',
+
+        highlights: [
+            'Professional corporate homepage',
+            'Company profile and business information',
+            'Software development service presentation',
+            'Responsive frontend interfaces',
+            'Laravel backend integration',
+            'Structured content and database management',
+            'Component-based React development',
+            'TypeScript for maintainable frontend code'
         ],
-        "architecture_notes": "React/TypeScript frontend deployed on Vercel, communicating with a Node.js backend API. MySQL database stores recipe, region, and ingredient data with relational mappings.",
-        "technologies": [
-            "React",
-            "TypeScript",
-            "MySQL",
-            "nodejs"
+
+        architecture_notes:
+            'A Laravel application using Inertia.js to connect server-side routing and application logic with React and TypeScript interfaces. MySQL provides persistent relational data storage.',
+
+        technologies: [
+            'Laravel',
+            'React',
+            'TypeScript',
+            'Inertia.js',
+            'MySQL'
         ],
-        "image": "/images/projects/oromofood.webp",
-        "github_url": "https://github.com/mfop2o/finaloromofood",
-        "live_url": "https://finaloromofoodafter.vercel.app/",
-        "featured": true,
-        "sort_order": 3
+
+        image: '/images/projects/eisd.png',
+        github_url: null,
+        live_url: null,
+
+        featured: true,
+        sort_order: 3
     },
+
     {
-        "id": 8,
-        "title": "Business Management Suite",
-        "slug": "business-management-suite",
-        "category": "Business System",
-        "short_description": "A modular suite for invoicing, inventory and client management in a single dashboard.",
-        "description": "A modular back-office system covering invoicing, inventory and client relationships. Built with role-based access and clean reporting so growing teams can run operations without spreadsheet sprawl.",
-        "problem": "Small and growing businesses often manage invoicing, inventory, and client records across disconnected spreadsheets and manual processes. This creates data inconsistency, duplicated effort, and difficulty tracking business performance.",
-        "solution": "A unified back-office dashboard that consolidates invoicing, inventory tracking, and client relationship management into a single application with role-based access control and automated reporting.",
-        "my_role": "Developed the full-stack application — designed the database schema for multi-module business data, built the Laravel backend with role-based middleware, and implemented the frontend dashboard with Tailwind CSS.",
-        "highlights": [
-            "Invoice generation and tracking",
-            "Inventory management with stock alerts",
-            "Client relationship management",
-            "Role-based access control",
-            "Business reporting dashboard",
-            "Export functionality for records"
+        id: 4,
+        title: 'OBM Construction Enterprise Website',
+        slug: 'obm-construction-website',
+        category: 'Construction & Enterprise',
+
+        short_description:
+            'A modern corporate website showcasing a construction enterprise, its services, projects, and business capabilities.',
+
+        description:
+            'A corporate website for OBM Construction Enterprise, designed to strengthen its online presence and present its construction services, projects, company profile, and business capabilities. The application is built with Laravel, React, TypeScript, and Inertia.js.',
+
+        problem:
+            'Construction companies need a credible digital presence to showcase completed projects, explain their services, communicate their capabilities, and help potential clients understand their experience and business offerings.',
+
+        solution:
+            'A modern, responsive corporate website that organizes company information, construction services, project showcases, and contact information into a professional digital experience. The architecture provides a foundation for maintaining business content and extending website functionality.',
+
+        my_role:
+            'Worked on full-stack website development using Laravel, React, TypeScript, and Inertia.js. Focused on the website structure, reusable frontend components, responsive interfaces, and integration between the Laravel backend and React-based user experience.',
+
+        highlights: [
+            'Professional corporate homepage',
+            'Construction services presentation',
+            'Project portfolio and showcase',
+            'Company profile and business information',
+            'Responsive React interfaces',
+            'Reusable UI components',
+            'Laravel application integration',
+            'Contact and business inquiry sections'
         ],
-        "architecture_notes": "Laravel MVC application with Blade/Tailwind CSS frontend. MySQL database with separate tables for invoices, inventory items, clients, and user roles. Middleware handles authorization per module.",
-        "technologies": [
-            "Laravel",
-            "PHP",
-            "MySQL",
-            "Tailwind CSS"
+
+        architecture_notes:
+            'A Laravel and Inertia.js application with React and TypeScript powering the user interface. The architecture combines server-side application logic with reusable frontend components and SPA-like navigation.',
+
+        technologies: [
+            'Laravel',
+            'React',
+            'TypeScript',
+            'Inertia.js'
         ],
-        "image": null,
-        "github_url": "https://github.com/your-username/business-suite",
-        "live_url": null,
-        "featured": true,
-        "sort_order": 4
+
+        image: '/images/projects/obm.png',
+        github_url: null,
+        live_url: null,
+
+        featured: true,
+        sort_order: 4
+    },
+
+    {
+        id: 5,
+        title: 'AI-Powered Service Intelligence Platform',
+        slug: 'ai-powered-service-intelligence',
+        category: 'AI & SaaS',
+
+        short_description:
+            'An AI-powered platform that helps people discover, compare, and evaluate services through centralized information and intelligent recommendations.',
+
+        description:
+            'The AI-Powered Service Intelligence Platform (ASIP) is designed to make service discovery more transparent and convenient. It brings service information, provider profiles, customer feedback, and AI-assisted comparison into a centralized digital platform. Built with Next.js, TypeScript, Django, PostgreSQL, and Docker, the project aims to help users make more informed service-related decisions.',
+
+        problem:
+            'Finding reliable service providers can be difficult when information is scattered across different platforms and customer experiences are hard to compare. Individuals may struggle to verify providers, evaluate service quality, and make informed decisions using inconsistent or incomplete information.',
+
+        solution:
+            'A centralized service intelligence platform that organizes provider information, customer feedback, and service categories in one place. AI-assisted comparison and recommendations can help users evaluate available options, while provider verification and moderation workflows support information quality and trust.',
+
+        my_role:
+            'Worked on the design and development of a full-stack service intelligence platform using Next.js, TypeScript, Django, PostgreSQL, and Docker. The project combines modern frontend development, backend application services, structured data management, and an architecture intended to support AI-assisted service discovery.',
+
+        highlights: [
+            'Centralized service and provider discovery',
+            'Organized service categories and provider profiles',
+            'Customer feedback and service evaluation',
+            'AI-assisted service comparison and recommendations',
+            'Provider registration and onboarding workflows',
+            'Administrative verification and moderation',
+            'PostgreSQL relational data management',
+            'Docker-based development and deployment configuration'
+        ],
+
+        architecture_notes:
+            'Next.js and TypeScript power the frontend, while Django provides backend application services. PostgreSQL stores structured application data, and Docker supports containerized development and deployment. AI-assisted recommendations and comparisons can be integrated into the platform’s service discovery workflows.',
+
+        technologies: [
+            'Next.js',
+            'TypeScript',
+            'Django',
+            'PostgreSQL',
+            'Docker'
+        ],
+
+        image: '/images/projects/asip.png',
+        github_url: 'https://github.com/injifannoo/service-intelligence-platform',
+        live_url: null,
+
+        featured: true,
+        sort_order: 5
     }
 ];
 

@@ -43,16 +43,10 @@ export default function HeroContent() {
                     View Projects
                     <ArrowIcon />
                 </Button>
-                {site.cv_available ? (
-                    <Button href={site.cv_path} external variant="outline" dark>
-                        <Download className="h-3.5 w-3.5" />
-                        Resume
-                    </Button>
-                ) : (
-                    <Button href="#contact" variant="outline" dark>
-                        Get in Touch
-                    </Button>
-                )}
+                <Button href="/images/projects/Bontu_Dereje_Legese_Updated_CV.pdf" external variant="outline" dark>
+                    <ArrowIcon className="h-3.5 w-3.5" />
+                    My Resume
+                </Button>
             </div>
 
             {/* Direct social links */}
