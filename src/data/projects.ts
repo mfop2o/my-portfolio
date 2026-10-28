@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
         ],
 
         image: '/images/projects/ubgd.png',
-        github_url: null,
+        github_url: 'https://github.com/mfop2o/urban-beautification-green-development',
         live_url: null,
 
         featured: true,
@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
         ],
 
         image: '/images/projects/faris.png',
-        github_url: null,
+        github_url: 'https://github.com/mfop2o/ai-powered-digital-lending',
         live_url: null,
 
         featured: true,
@@ -156,7 +156,7 @@ export const PROJECTS: Project[] = [
         ],
 
         image: '/images/projects/eisd.png',
-        github_url: null,
+        github_url: 'https://github.com/mfop2o/ethio-innovation-website',
         live_url: null,
 
         featured: true,
@@ -206,7 +206,7 @@ export const PROJECTS: Project[] = [
         ],
 
         image: '/images/projects/obm.png',
-        github_url: null,
+        github_url: 'https://github.com/mfop2o/obm-construction-website',
         live_url: null,
 
         featured: true,
@@ -262,6 +262,61 @@ export const PROJECTS: Project[] = [
 
         featured: true,
         sort_order: 5
+    },
+    {
+        id: 6,
+        title: 'Ethio Service Connect (EISC)',
+        slug: 'ethio-service-connect',
+        category: 'Service Marketplace',
+
+        short_description:
+            'A service-dispatch marketplace for Ethiopia that connects customers with verified, nearby service providers through a fully tracked request → dispatch → quote → work → review pipeline.',
+
+        description:
+            'Ethio Service Connect (EISC) is a full-stack service-dispatch marketplace for Ethiopia that connects customers with verified, nearby service providers (garage/auto repair, electricians, plumbers, carpenters). It replaces informal word-of-mouth with a transparent, auditable, rating-backed workflow covering the complete service lifecycle.',
+
+        problem:
+            'Finding licensed, trustworthy repair help in Ethiopia currently relies on phonebooks and word of mouth, with no pricing accountability, verification, or structured channel for emergencies.',
+
+        solution:
+            'A fully tracked service-dispatch platform with geo-aware matching, provider verification, role-based workspaces, an audited status history, per-request discussion threads, and a complete request-to-review lifecycle.',
+
+        my_role:
+            'Built the full-stack application using Laravel 13, React 19, TypeScript, Inertia 2, and Tailwind CSS 4 with Spatie Permissions, Spatie Activitylog, and comprehensive testing.',
+
+        highlights: [
+            'Complete service lifecycle with audited status history and discussion thread',
+            'Geo-aware dispatch engine using Haversine distance within coverage radius',
+            'Provider verification workflow with document uploads',
+            'Role-based workspaces (Super Admin, Admin, Dispatcher, Provider, Customer)',
+            'Full admin console for categories, providers, requests, and monitoring',
+            'Emergency queue and priority handling',
+            'Two-way reviews and ratings',
+            '46 tests / 128 assertions covering dispatch flow and admin management'
+        ],
+
+        architecture_notes:
+            'Laravel 13 backend with PHP 8.3 and MySQL, connected to React 19 and TypeScript via Inertia 2. Uses Spatie Permissions for RBAC, Spatie Activitylog for auditing, custom Eloquent scopes (approved(), available(), nearby()), and a Geo support class for distance calculations.',
+
+        technologies: [
+            'Laravel 13',
+            'PHP 8.3',
+            'MySQL',
+            'Inertia 2',
+            'React 19',
+            'TypeScript',
+            'Tailwind CSS 4',
+            'Vite 8',
+            'Spatie Permissions',
+            'Spatie Activitylog'
+        ],
+
+        image: '/images/projects/ethio-keep.png',
+        github_url: 'https://github.com/mfop2o/ethio-service-connect',
+        live_url: null,
+
+        featured: true,
+        sort_order: 6
     }
 ];
 

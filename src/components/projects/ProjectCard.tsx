@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
                     {/* Project information */}
                     <div className="flex flex-1 flex-col justify-center gap-1.5 bg-midnight-800 px-5 py-4 dark:bg-slate-50">
-                        <p className="font-mono text-[8px] uppercase tracking-[0.24em] text-cyan-400 dark:text-cyan-600">
+                        <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-cyan-400 dark:text-cyan-600 sm:text-[10px]">
                             {project.category}
                         </p>
                         <h3 className="font-display text-base font-semibold leading-tight tracking-[-0.01em] text-white dark:text-slate-900 sm:text-lg">
@@ -52,50 +52,48 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     onClick={() => setOpen(false)}
                 >
                     <div
-                        className="relative max-h-[95vh] w-full max-w-4xl overflow-y-auto rounded-xl border border-white/10 bg-midnight-900 shadow-2xl"
+                        className="relative max-h-[97vh] w-full max-w-5xl overflow-y-auto rounded-xl border border-white/10 bg-midnight-900 shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
                             onClick={() => setOpen(false)}
-                            className="absolute right-3 top-3 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-midnight-900/80 text-slate-300 transition-colors hover:border-cyan-400/60 hover:text-white"
+                            className="absolute right-4 top-4 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-midnight-900/80 text-slate-300 transition-colors hover:border-cyan-400/60 hover:text-white"
                             aria-label="Close"
                         >
-                            <X className="h-4 w-4" />
+                            <X className="h-5 w-5" />
                         </button>
 
                         <div className="grid gap-0 md:grid-cols-[42%_58%]">
-                            <div className="relative h-full w-full bg-midnight-950">
-                                <div className="flex h-full w-full items-center justify-center p-2">
-                                    <div className="h-full w-full [&_img]:h-full [&_img]:w-full [&_img]:object-contain">
-                                        <ProjectPreview project={project} caption={false} />
-                                    </div>
+                            <div className="flex min-h-[360px] items-center justify-center bg-midnight-950 p-8 md:min-h-[420px]">
+                                <div className="max-h-[360px] w-full [&_img]:h-full [&_img]:max-h-[360px] [&_img]:w-full [&_img]:object-contain">
+                                    <ProjectPreview project={project} caption={false} />
                                 </div>
                             </div>
 
-                            <div className="flex flex-col gap-3 p-5 sm:p-6">
+                            <div className="flex flex-col gap-4 p-6 sm:p-7">
                                 <div>
-                                    <p className="mb-1.5 font-mono text-[8px] uppercase tracking-[0.24em] text-cyan-400">
+                                    <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-cyan-400 sm:text-[11px]">
                                         {project.category}
                                     </p>
-                                    <h3 className="font-display text-lg font-semibold leading-tight tracking-[-0.01em] text-white sm:text-xl">
+                                    <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.01em] text-white sm:text-2xl">
                                         {project.title}
                                     </h3>
                                 </div>
 
-                                <p className="text-xs leading-relaxed text-slate-300">
+                                <p className="text-sm leading-relaxed text-slate-300">
                                     {project.description || project.short_description}
                                 </p>
 
                                 {technologies.length > 0 && (
                                     <div>
-                                        <p className="mb-1.5 font-mono text-[8px] uppercase tracking-[0.24em] text-cyan-400">
+                                        <p className="mb-1.5 font-mono text-[9px] uppercase tracking-[0.24em] text-cyan-400 sm:text-[10px]">
                                             Tech Stack
                                         </p>
                                         <div className="flex flex-wrap items-center gap-1.5">
                                             {technologies.map((tech) => (
                                                 <span
                                                     key={tech}
-                                                    className="inline-flex items-center rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.16em] text-gray-300"
+                                                    className="inline-flex items-center rounded-md border border-cyan-400/30 bg-cyan-400/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-gray-300 sm:text-[10px]"
                                                 >
                                                     {tech}
                                                 </span>
@@ -111,11 +109,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                                                 href={live.href}
                                                 target={live.target}
                                                 rel={live.rel}
-                                                className="inline-flex items-center justify-center gap-1.5 rounded-md bg-gradient-to-r from-electric-500 to-electric-600 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:brightness-110"
+                                                className="inline-flex items-center justify-center gap-1.5 rounded-md bg-gradient-to-r from-electric-500 to-electric-600 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition-all duration-300 hover:brightness-110"
                                                 onClick={(e) => e.stopPropagation()}
                                             >
                                                 Live Demo
-                                                <ArrowUpRightIcon className="h-3 w-3" />
+                                                <ArrowUpRightIcon className="h-3.5 w-3.5" />
                                             </a>
                                         )}
                                         {github.href && (
@@ -123,11 +121,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                                                 href={github.href}
                                                 target={github.target}
                                                 rel={github.rel}
-                                                className="inline-flex items-center justify-center gap-1.5 rounded-md border border-white/15 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-200 transition-all duration-300 hover:border-cyan-400/60 hover:text-cyan-300"
+                                                className="inline-flex items-center justify-center gap-1.5 rounded-md border border-white/15 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-200 transition-all duration-300 hover:border-cyan-400/60 hover:text-cyan-300"
                                                 onClick={(e) => e.stopPropagation()}
                                             >
                                                 GitHub
-                                                <ArrowUpRightIcon className="h-3 w-3" />
+                                                <ArrowUpRightIcon className="h-3.5 w-3.5" />
                                             </a>
                                         )}
                                     </div>
