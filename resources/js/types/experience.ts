@@ -3,6 +3,8 @@ export interface Experience {
     company: string;
     position: string;
     description: string | null;
+    /** Key achievements / responsibilities as bullet points. */
+    highlights: string[] | null;
     technologies: string[] | null;
     start_date: string;
     end_date: string | null;

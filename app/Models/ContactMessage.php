@@ -14,6 +14,8 @@ class ContactMessage extends Model
         'name',
         'email',
         'subject',
+        'project_type',
+        'budget',
         'message',
         'read_at',
     ];

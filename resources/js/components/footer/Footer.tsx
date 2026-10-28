@@ -1,99 +1,115 @@
 import type { PageProps } from '@/types';
 import { usePage } from '@inertiajs/react';
+import { ArrowUp, ArrowUpRight } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import { NAV_LINKS } from '@/components/navbar/BrandMark';
+import { GitHubIcon, LinkedInIcon } from '@/components/ui/SocialIcons';
+import { isConfiguredUrl } from '@/lib/url';
 
 export default function Footer() {
     const { site } = usePage<PageProps>().props;
     const year = new Date().getFullYear();
 
-    return (
-        <footer className="relative border-t border-white/6 bg-midnight-950">
-            {/* Top gradient line */}
-            <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-electric-500/40 to-transparent" />
+    const navItems = [
+        { label: 'About', href: '#about' },
+        { label: 'Projects', href: '#projects' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Contact', href: '#contact' },
+    ];
 
-            <Container className="py-16 sm:py-20">
-                <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
-                    {/* Brand */}
+    const connectItems: { label: string; href: string; icon?: React.ReactNode; external?: boolean }[] = [];
+
+    if (isConfiguredUrl(site.socials.github)) {
+        connectItems.push({
+            label: 'GitHub',
+            href: site.socials.github,
+            icon: <GitHubIcon className="h-4 w-4" />,
+            external: true,
+        });
+    }
+    if (isConfiguredUrl(site.socials.linkedin)) {
+        connectItems.push({
+            label: 'LinkedIn',
+            href: site.socials.linkedin,
+            icon: <LinkedInIcon className="h-4 w-4" />,
+            external: true,
+        });
+    }
+    connectItems.push({ label: 'Email', href: `mailto:${site.email}`, icon: null, external: false });
+
+    return (
+        <footer className="relative border-t border-white/10 bg-[#171C19]">
+            <span aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
+
+            <Container className="py-12 sm:py-14">
+                <div className="grid gap-10 md:grid-cols-[1.6fr_0.9fr_0.9fr]">
                     <div>
                         <a href="#top" className="group inline-flex items-center gap-3">
-                            <span className="grid h-9 w-9 place-items-center border border-white/15 bg-white/5 font-display text-sm font-bold transition-all duration-300 group-hover:border-cyan-400/50">
-                                <span className="text-gradient">{site.monogram}</span>
+                            <span className="grid h-9 w-9 place-items-center border border-cyan-400/40 bg-cyan-500/5 font-display text-sm font-bold text-cyan-300 transition-all duration-300 group-hover:border-cyan-300 group-hover:text-cyan-200">
+                                {site.monogram}
                             </span>
-                            <span className="font-display text-sm font-semibold uppercase tracking-[0.22em] text-white/80 transition-colors duration-300 group-hover:text-white">
+                            <span className="font-display text-sm font-semibold uppercase tracking-[0.22em] text-white transition-colors duration-300 group-hover:text-cyan-300">
                                 {site.name}
                             </span>
                         </a>
-                        <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-500">
-                            {site.title} — crafting considered digital products with Laravel, React
-                            and everything in between.
-                        </p>
 
-                        {/* Availability */}
-                        <div className="mt-6 flex items-center gap-2">
-                            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
-                            <span className="text-[11px] text-slate-500">{site.availability}</span>
-                        </div>
+                        <p className="mt-5 text-[13px] font-medium text-cyan-300">Full-Stack Software Developer</p>
+                        <p className="mt-3 max-w-sm text-[13px] leading-relaxed text-slate-300">
+                            Building reliable software and digital solutions that solve real-world problems.
+                        </p>
                     </div>
 
-                    {/* Navigate */}
                     <nav aria-label="Footer navigation">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-600">Navigate</p>
-                        <ul className="mt-5 space-y-3">
-                            {NAV_LINKS.map((link) => (
-                                <li key={link.id}>
+                        <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-cyan-300">Navigation</p>
+                        <ul className="mt-4 space-y-2.5">
+                            {navItems.map((link) => (
+                                <li key={link.label}>
                                     <a
                                         href={link.href}
-                                        className="text-sm text-slate-500 transition-colors duration-300 hover:text-cyan-300"
+                                        className="group/link inline-flex items-center gap-1.5 text-[13px] text-slate-300 transition-colors duration-300 hover:text-cyan-300"
                                     >
                                         {link.label}
+                                        <ArrowUpRight className="h-3 w-3 opacity-0 transition-all duration-300 group-hover/link:opacity-100" />
                                     </a>
                                 </li>
                             ))}
                         </ul>
                     </nav>
 
-                    {/* Elsewhere */}
                     <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-600">Elsewhere</p>
-                        <ul className="mt-5 space-y-3 text-sm">
-                            <li>
-                                <a href={site.socials.github} target="_blank" rel="noopener noreferrer"
-                                    className="text-slate-500 transition-colors duration-300 hover:text-cyan-300">
-                                    GitHub
-                                </a>
-                            </li>
-                            <li>
-                                <a href={site.socials.linkedin} target="_blank" rel="noopener noreferrer"
-                                    className="text-slate-500 transition-colors duration-300 hover:text-cyan-300">
-                                    LinkedIn
-                                </a>
-                            </li>
-                            <li>
-                                <a href={`mailto:${site.email}`}
-                                    className="text-slate-500 transition-colors duration-300 hover:text-cyan-300">
-                                    {site.email}
-                                </a>
-                            </li>
+                        <p className="text-[9px] font-semibold uppercase tracking-[0.26em] text-cyan-300">Connect</p>
+                        <ul className="mt-4 space-y-2.5 text-[13px]">
+                            {connectItems.map(({ label, href, icon, external }) => (
+                                <li key={label}>
+                                    <a
+                                        href={href}
+                                        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                        className="inline-flex items-center gap-2 text-slate-300 transition-colors duration-300 hover:text-cyan-300"
+                                    >
+                                        {icon}
+                                        {label}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
 
-                {/* Bottom bar */}
-                <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-8">
-                    <p className="text-[11px] text-slate-600">
+                <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-[10px] text-slate-300">
                         © {year} {site.name}. All rights reserved.
                     </p>
-                    <p className="text-[11px] text-slate-700">
-                        Built with Laravel · React · TypeScript · Tailwind
-                    </p>
-                    <a
-                        href="#top"
-                        className="group flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-600 transition-all duration-300 hover:text-cyan-300"
-                    >
-                        Back to top
-                        <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-1">↑</span>
-                    </a>
+
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
+                        <p className="text-[10px] text-slate-300">Built with Laravel · React · TypeScript</p>
+                        <a
+                            href="#top"
+                            className="group inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300 transition-all duration-300 hover:text-cyan-200"
+                        >
+                            Back to top
+                            <ArrowUp aria-hidden className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-1" />
+                        </a>
+                    </div>
                 </div>
             </Container>
         </footer>

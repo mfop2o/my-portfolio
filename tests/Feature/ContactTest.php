@@ -16,6 +16,8 @@ class ContactTest extends TestCase
             'name' => 'Jane Doe',
             'email' => 'jane@example.com',
             'subject' => 'Project inquiry',
+            'project_type' => 'web-application',
+            'budget' => '1000-3000',
             'message' => 'I would love to discuss a project with you.',
         ]);
 
@@ -25,6 +27,8 @@ class ContactTest extends TestCase
             'name' => 'Jane Doe',
             'email' => 'jane@example.com',
             'subject' => 'Project inquiry',
+            'project_type' => 'web-application',
+            'budget' => '1000-3000',
             'message' => 'I would love to discuss a project with you.',
         ]);
     }
@@ -35,10 +39,12 @@ class ContactTest extends TestCase
             'name' => '',
             'email' => 'not-an-email',
             'subject' => '',
+            'project_type' => 'invalid-type',
+            'budget' => 'invalid-budget',
             'message' => '',
         ]);
 
-        $response->assertInvalid(['name', 'email', 'subject', 'message']);
+        $response->assertInvalid(['name', 'email', 'subject', 'project_type', 'budget', 'message']);
 
         $this->assertSame(0, ContactMessage::query()->count());
     }

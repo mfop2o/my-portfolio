@@ -15,8 +15,8 @@ export default function SectionTitle({
 }: SectionTitleProps) {
     return (
         <Tag
-            className={`font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl ${
-                dark ? 'text-white' : 'text-slate-900'
+            className={`font-display text-[1.7rem] font-semibold leading-[1.06] tracking-[-0.06em] sm:text-[2.15rem] lg:text-[2.7rem] ${
+                dark ? 'text-white' : 'text-slate-900 dark:text-white'
             } ${className}`}
         >
             {children}

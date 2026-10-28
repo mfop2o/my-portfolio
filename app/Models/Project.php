@@ -16,6 +16,11 @@ class Project extends Model
         'category',
         'short_description',
         'description',
+        'problem',
+        'solution',
+        'my_role',
+        'highlights',
+        'architecture_notes',
         'technologies',
         'image',
         'github_url',
@@ -28,6 +33,7 @@ class Project extends Model
     {
         return [
             'technologies' => 'array',
+            'highlights' => 'array',
             'featured' => 'boolean',
             'sort_order' => 'integer',
         ];

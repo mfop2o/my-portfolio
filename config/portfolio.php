@@ -21,38 +21,52 @@ return [
     'title' => 'Full-Stack Software Developer',
 
     /*
-    | The hero headline rendered in large display type. Use \n for line breaks.
+    | Short tagline used for SEO / meta descriptions.
     */
-    'headline' => "Hi, I'm Bontu.",
-
-    /*
-    | Short tagline used directly beneath the headline.
-    */
-    'tagline' => 'I build modern, scalable digital products and business systems that solve real-world problems.',
+    'tagline' => "Full-stack software developer building scalable backend systems, modern web apps, and clean digital products.",
 
     /*
     | Longer introduction used in the About section.
     */
-    'about' => 'I design and build full-stack web applications with clean architecture and a strong sense for detail. From database design to polished interfaces, I care about the whole journey of a product — not just one slice of it.',
+    'about' => "Full-stack software developer with a Computer Science degree from Addis Ababa University. I design APIs, model databases, and build fast, responsive user interfaces that deliver real business value.",
+
+    /*
+    | The one-line value statement shown at the top of the About section.
+    */
+    'headline' => 'Turning complex problems into clean, reliable, and scalable software.',
 
     /*
     | Highlights shown in the About section.
     */
     'focus' => [
         'Full-Stack Development',
-        'Business Systems',
-        'Frontend Engineering',
         'Backend Engineering',
+        'Frontend Engineering',
         'Database Design',
+        'REST APIs',
         'Clean Architecture',
-        'User Experience',
-        'Problem Solving',
     ],
 
     /*
     | Years of professional experience. Keep accurate — do not inflate.
     */
     'experience_years' => '1+',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Education
+    |--------------------------------------------------------------------------
+    |
+    | Only record credentials you actually hold. Rendered as a dedicated
+    | Education section and inside the career timeline.
+    |
+    */
+    'education' => [
+        'institution' => 'Addis Ababa University',
+        'degree' => "Bachelor's degree in Computer Science",
+        'graduated' => 'June 2025',
+        'location' => 'Addis Ababa, Ethiopia',
+    ],
 
     'email' => env('PORTFOLIO_EMAIL', 'hello@example.com'),
 
@@ -61,7 +75,18 @@ return [
     /*
     | Availability label shown as a status badge.
     */
-    'availability' => 'Available for selected projects',
+    'availability' => 'Open to full-time & freelance opportunities',
+
+    /*
+    | Phone / WhatsApp number shown in the contact section.
+    */
+    'phone' => env('PORTFOLIO_PHONE', '+251 900 000 000'),
+
+    /*
+    | Path to your profile photo. Drop your photo at public/images/profile.jpg
+    | and set this value — the hero renders your initials until then.
+    */
+    'avatar' => env('PORTFOLIO_AVATAR', '/images/hero.png'),
 
     /*
     | Path to the CV file inside the public directory.

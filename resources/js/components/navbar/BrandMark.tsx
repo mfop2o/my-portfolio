@@ -2,12 +2,16 @@ import { Link } from '@inertiajs/react';
 import type { PageProps } from '@/types';
 import { usePage } from '@inertiajs/react';
 
+/**
+ * Single source of truth for in-page navigation.
+ *
+ * `id` must match a real section element id so the scroll-spy highlight and
+ * the footer links always point at something that exists.
+ */
 export const NAV_LINKS = [
-    { label: 'About',      href: '#about',      id: 'about'      },
-    { label: 'Experience', href: '#experience', id: 'experience' },
-    { label: 'Services',   href: '#services',   id: 'services'   },
-    { label: 'Projects',   href: '#projects',   id: 'projects'   },
-    { label: 'Contact',    href: '#contact',    id: 'contact'    },
+    { label: 'About',    href: '#about',    id: 'about'    },
+    { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'Contact',  href: '#contact',  id: 'contact'  },
 ] as const;
 
 interface BrandMarkProps {

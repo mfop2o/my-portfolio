@@ -1,8 +1,9 @@
 import { Link } from '@inertiajs/react';
 import type { Project } from '@/types/project';
 import Reveal from '@/components/ui/Reveal';
-import { ArrowIcon, ArrowUpRightIcon } from '@/components/ui/icons';
+import { ArrowUpRightIcon } from '@/components/ui/icons';
 import ProjectPreview from './ProjectPreview';
+import { externalLinkProps } from '@/lib/url';
 
 interface ProjectCardProps {
     project: Project;
@@ -10,72 +11,38 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-    const flip = index % 2 === 1;
+    const live = externalLinkProps(project.live_url);
+    const source = externalLinkProps(project.github_url);
 
     return (
-        <Reveal variant={flip ? 'right' : 'left'} className="group">
-            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
-                {/* Preview */}
-                <div className={`lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
-                    <ProjectPreview project={project} />
-                </div>
-
-                {/* Copy */}
-                <div className={`lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
-                    {/* Category */}
-                    <p className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-cyan-400">
-                        <span aria-hidden className="h-px w-8 bg-gradient-to-r from-electric-500 to-cyan-400" />
-                        {project.category}
-                    </p>
-
-                    {/* Title */}
-                    <h3 className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight text-white transition-colors duration-300 group-hover:text-cyan-200 sm:text-3xl">
-                        {project.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="mt-4 text-sm leading-relaxed text-slate-400 sm:text-base">
-                        {project.short_description}
-                    </p>
-
-                    {/* Tech tags */}
-                    {project.technologies && project.technologies.length > 0 && (
-                        <div className="mt-6 flex flex-wrap gap-2">
-                            {project.technologies.map((tech) => (
-                                <span
-                                    key={tech}
-                                    className="rounded-sm border border-white/8 bg-white/4 px-2.5 py-1 text-[11px] font-medium text-slate-400 transition-colors duration-200 hover:border-cyan-400/30 hover:text-slate-300"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-                    )}
-
-                    {/* Links */}
-                    <div className="mt-8 flex flex-wrap items-center gap-6">
-                        <Link
-                            href={`/projects/${project.slug}`}
-                            className="group/link inline-flex items-center gap-2 border-b border-white/20 pb-0.5 text-xs font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:border-cyan-400/60 hover:text-cyan-300"
-                        >
-                            View project
-                            <ArrowIcon className="transition-transform duration-300 group-hover/link:translate-x-1" />
-                        </Link>
-
-                        {project.github_url && (
-                            <a
-                                href={project.github_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group/link inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 transition-colors duration-300 hover:text-slate-300"
-                            >
-                                GitHub
-                                <ArrowUpRightIcon />
-                            </a>
-                        )}
+        <Reveal delay={(index % 2) * 90} className="h-full">
+            <article className="group relative h-full overflow-hidden rounded-[26px] border border-slate-200/80 bg-slate-900/95 shadow-[0_18px_50px_-30px_rgba(15,23,42,0.45)] transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/30 hover:shadow-[0_24px_56px_-24px_rgba(8,145,178,0.35)] dark:border-white/10 dark:bg-midnight-850/90">
+                <Link href={`/projects/${project.slug}`} className="relative block" aria-label={`Read the ${project.title} case study`}>
+                    <div className="relative overflow-hidden rounded-[26px]">
+                        <ProjectPreview project={project} caption={false} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent" />
                     </div>
-                </div>
-            </div>
+
+                    <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                        <div className="flex items-center justify-between gap-3 text-white">
+                            <span className="font-mono text-[7px] font-medium uppercase tracking-[0.18em] text-slate-200/90">
+                                {project.category}
+                            </span>
+                            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/10 backdrop-blur-sm transition-transform duration-300 group-hover:translate-x-1 group-hover:border-cyan-300/40 group-hover:bg-cyan-400/15">
+                                <ArrowUpRightIcon className="h-3 w-3" />
+                            </span>
+                        </div>
+
+                        <h3 className="mt-2 font-display text-[1.02rem] font-semibold leading-[1.04] tracking-[-0.05em] text-white sm:text-[1.2rem]">
+                            {project.title}
+                        </h3>
+
+                        <p className="mt-1 max-w-xs text-[10.5px] leading-[1.45] text-slate-200/90 line-clamp-2">
+                            {project.short_description}
+                        </p>
+                    </div>
+                </Link>
+            </article>
         </Reveal>
     );
 }

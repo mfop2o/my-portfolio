@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -29,9 +30,16 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $cvPath = trim((string) config('portfolio.cv_path'), '/');
+        $cvAvailable = $cvPath !== '' && File::exists(public_path($cvPath));
+
         return [
             ...parent::share($request),
-            'site' => config('portfolio'),
+            'site' => [
+                ...config('portfolio'),
+                // The CV is only linked when the file actually exists in /public.
+                'cv_available' => $cvAvailable,
+            ],
             'auth' => [
                 'user' => $request->user(),
             ],

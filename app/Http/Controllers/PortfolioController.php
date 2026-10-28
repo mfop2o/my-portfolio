@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Certificate;
 use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Service;
@@ -26,11 +25,6 @@ class PortfolioController extends Controller
             ->get();
 
         $services = Service::query()
-            ->active()
-            ->ordered()
-            ->get();
-
-        $certificates = Certificate::query()
             ->ordered()
             ->get();
 
@@ -38,7 +32,6 @@ class PortfolioController extends Controller
             'projects' => $projects,
             'experiences' => $experiences,
             'services' => $services,
-            'certificates' => $certificates,
         ]);
     }
 

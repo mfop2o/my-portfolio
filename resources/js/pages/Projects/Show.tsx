@@ -7,19 +7,16 @@ import Container from '@/components/ui/Container';
 import Reveal from '@/components/ui/Reveal';
 import Button from '@/components/ui/Button';
 import ProjectPreview from '@/components/projects/ProjectPreview';
-import { ArrowIcon, ArrowUpRightIcon } from '@/components/ui/icons';
-import Glow from '@/components/background/Glow';
-import DecorativeCircle from '@/components/background/DecorativeCircle';
-import SectionLabel from '@/components/ui/SectionLabel';
+import { ArrowIcon } from '@/components/ui/icons';
+import CaseStudyHero from '@/components/case-study/CaseStudyHero';
+import CaseStudyFacts from '@/components/case-study/CaseStudyFacts';
+import CaseStudyBody from '@/components/case-study/CaseStudyBody';
+import CaseStudyLinks from '@/components/case-study/CaseStudyLinks';
 
 interface ShowProps extends PageProps {
     project: Project;
 }
 
-/**
- * Minimal project case-study page.
- * Designed to be expanded with galleries, process details and outcomes.
- */
 const Show: ResolvedComponent = ({ project }: ShowProps) => {
     const { site } = usePage<PageProps>().props;
     const canonical =
@@ -28,7 +25,7 @@ const Show: ResolvedComponent = ({ project }: ShowProps) => {
     return (
         <>
             <Head>
-                <title>{project.title}</title>
+                <title>{`${project.title} — ${site.name}`}</title>
                 <meta name="description" content={project.short_description} />
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content={project.title} />
@@ -36,114 +33,69 @@ const Show: ResolvedComponent = ({ project }: ShowProps) => {
                 {canonical && <link rel="canonical" href={canonical} />}
             </Head>
 
-            <section className="relative overflow-hidden bg-midnight-900 pt-[72px]">
-                <Glow color="electric" opacity={0.08} className="-left-32 top-10" size="600px" />
-                <DecorativeCircle size={420} className="-right-52 top-24" />
+            <Link
+                href="/"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-20 focus:z-50 focus:rounded-sm focus:bg-midnight-900 focus:px-4 focus:py-2 focus:text-xs focus:font-semibold focus:uppercase focus:tracking-[0.2em] focus:text-white"
+            >
+                ← Back to all projects
+            </Link>
 
-                <Container className="relative py-20 sm:py-28">
-                    <Link
-                        href="/"
-                        className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-500 transition-colors duration-300 hover:text-cyan-300"
-                    >
-                        <span aria-hidden className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
-                        Back to home
-                    </Link>
+            <CaseStudyHero
+                category={project.category}
+                title={project.title}
+                description={project.short_description}
+                actions={
+                    <>
+                        <CaseStudyLinks project={project} />
+                        <Link
+                            href="/#projects"
+                            className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500 transition-colors duration-300 hover:text-slate-300"
+                        >
+                            All projects
+                        </Link>
+                    </>
+                }
+            />
 
-                    <Reveal className="mt-12 max-w-4xl">
-                        <SectionLabel dark>{project.category}</SectionLabel>
-                        <h1 className="mt-5 font-display text-4xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl">
-                            {project.title}
-                        </h1>
-                        <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
-                            {project.short_description}
-                        </p>
+            <CaseStudyFacts project={project} />
 
-                        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-                            {project.github_url && (
-                                <a
-                                    href={project.github_url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group/link inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:text-cyan-300"
-                                >
-                                    GitHub
-                                    <ArrowUpRightIcon />
-                                </a>
-                            )}
-                            {project.live_url && (
-                                <a
-                                    href={project.live_url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group/link inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:text-cyan-300"
-                                >
-                                    Live site
-                                    <ArrowUpRightIcon />
-                                </a>
-                            )}
-                        </div>
+            {/* Preview */}
+            <div className="bg-midnight-900 pb-16 sm:pb-24">
+                <Container>
+                    <Reveal variant="scale">
+                        <ProjectPreview project={project} />
                     </Reveal>
                 </Container>
-            </section>
+            </div>
 
-            <Container className="pb-8">
-                <Reveal variant="scale">
-                    <ProjectPreview project={project} />
-                </Reveal>
-            </Container>
+            <CaseStudyBody project={project} />
 
-            <section className="py-20 sm:py-24">
-                <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            {/* CTA strip */}
+            <section className="relative overflow-hidden border-t border-white/5 bg-midnight-900 py-20 sm:py-24">
+                <Container className="relative">
                     <Reveal>
-                        <h2 className="font-display text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
-                            About this project
-                        </h2>
-                        {project.technologies && project.technologies.length > 0 && (
-                            <div className="mt-6 flex flex-wrap gap-2">
-                                {project.technologies.map((tech) => (
-                                    <span
-                                        key={tech}
-                                        className="border border-slate-200 dark:border-slate-500/25 px-2.5 py-1 text-[11px] font-medium text-slate-600 dark:text-slate-300"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
+                        <div className="flex flex-wrap items-center justify-between gap-8">
+                            <div>
+                                <p className="flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.3em] text-cyan-400">
+                                    <span aria-hidden className="h-px w-6 bg-gradient-to-r from-electric-500 to-cyan-400" />
+                                    {site.availability}
+                                </p>
+                                <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                                    Like what you see?
+                                </h2>
+                                <p className="mt-3 text-slate-400">Let&apos;s build something together.</p>
                             </div>
-                        )}
-                    </Reveal>
-
-                    <Reveal variant="right" delay={80}>
-                        <div className="space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-400 sm:text-lg">
-                            <p>{project.description ?? project.short_description}</p>
-                            <p>
-                                This case study is a living page — detailed breakdowns, decisions
-                                and outcomes can be added here as the work evolves.
-                            </p>
+                            <Button href="#contact" className="px-8 py-4">
+                                Start a project
+                                <ArrowIcon />
+                            </Button>
                         </div>
                     </Reveal>
-                </Container>
-            </section>
-
-            <section className="relative overflow-hidden border-t border-slate-500/15 bg-midnight-900 py-20 sm:py-24">
-                <Glow color="cyan" opacity={0.1} className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" size="600px" />
-                <Container className="relative flex flex-wrap items-center justify-between gap-8">
-                    <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-cyan-400">
-                            {site.availability}
-                        </p>
-                        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                            Like what you see?
-                        </h2>
-                    </div>
-                    <Button href={`mailto:${site.email}`}>
-                        Start a project
-                        <ArrowIcon />
-                    </Button>
                 </Container>
             </section>
         </>
     );
-}
+};
 
 Show.layout = (page: ReactNode) => <PortfolioLayout>{page}</PortfolioLayout>;
 

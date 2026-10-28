@@ -19,6 +19,7 @@ class Experience extends Model
         'company',
         'position',
         'description',
+        'highlights',
         'technologies',
         'start_date',
         'end_date',
@@ -29,6 +30,7 @@ class Experience extends Model
     protected function casts(): array
     {
         return [
+            'highlights' => 'array',
             'technologies' => 'array',
             'start_date' => 'date',
             'end_date' => 'date',

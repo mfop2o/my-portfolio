@@ -21,14 +21,14 @@ export default function Services({ services }: ServicesProps) {
 
             <Container>
                 <Reveal>
-                    <div className="flex flex-wrap items-end justify-between gap-8">
-                        <div>
-                            <SectionLabel>What I do</SectionLabel>
-                            <SectionTitle className="mt-5">Services</SectionTitle>
-                        </div>
-                        <p className="max-w-md text-sm leading-relaxed text-slate-500 sm:text-base dark:text-slate-400">
-                            Practical, dependable engineering across the full stack — from a blank
-                            schema to a polished, shipped interface.
+                    <div className="text-center">
+                        <SectionLabel className="justify-center">Services</SectionLabel>
+                        <SectionTitle className="mt-5 text-[1.8rem] leading-none tracking-[-0.06em] sm:text-[2.3rem] lg:text-[2.9rem]">
+                            What I can build
+                            <span className="text-gradient"> for you.</span>
+                        </SectionTitle>
+                        <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-slate-600 sm:text-base dark:text-slate-300">
+                            Practical, dependable engineering across the full stack — from a blank schema to a polished, shipped interface.
                         </p>
                     </div>
                 </Reveal>

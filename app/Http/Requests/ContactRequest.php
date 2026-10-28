@@ -25,6 +25,8 @@ class ContactRequest extends FormRequest
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'email', 'max:255'],
             'subject' => ['required', 'string', 'max:200'],
+            'project_type' => ['required', 'string', 'in:business-website,web-application,dashboard,api-backend,custom-software,other'],
+            'budget' => ['required', 'string', 'in:under-500,500-1000,1000-3000,3000-plus,lets-discuss'],
             'message' => ['required', 'string', 'max:5000'],
         ];
     }

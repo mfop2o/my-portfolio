@@ -24,23 +24,23 @@ type ButtonProps = ButtonAsAnchor | ButtonAsButton;
 
 const VARIANTS: Record<ButtonVariant, string> = {
     primary:
-        'bg-gradient-to-r from-electric-500 to-cyan-500 text-white shadow-[0_8px_28px_-8px_rgba(37,99,235,0.6)] hover:shadow-[0_12px_36px_-8px_rgba(6,182,212,0.55)] hover:brightness-110 active:brightness-95',
+        'bg-gradient-to-r from-electric-500 to-electric-600 text-white shadow-[0_8px_28px_-8px_rgba(18,36,61,0.75)] hover:shadow-[0_12px_36px_-8px_rgba(18,36,61,0.78)] hover:brightness-110 active:brightness-95',
     outline:
-        'border border-slate-300 bg-white text-slate-700 shadow-sm hover:border-cyan-400/60 hover:bg-cyan-50/60 hover:text-cyan-700 active:scale-[0.98]',
+        'border border-slate-300 bg-white text-slate-700 shadow-sm hover:border-electric-500/70 hover:bg-electric-50/70 hover:text-electric-700 active:scale-[0.98]',
     ghost:
-        'text-slate-600 hover:text-cyan-700 hover:bg-slate-100/60',
+        'text-slate-600 hover:text-electric-700 hover:bg-slate-100/60',
 };
 
 const VARIANTS_DARK: Record<ButtonVariant, string> = {
     primary: VARIANTS.primary,
     outline:
-        'border border-white/15 bg-white/6 text-slate-200 backdrop-blur-sm hover:border-cyan-400/60 hover:bg-white/10 hover:text-white active:scale-[0.98]',
+        'border border-white/15 bg-white/6 text-slate-200 backdrop-blur-sm hover:border-electric-400/70 hover:bg-white/10 hover:text-white active:scale-[0.98]',
     ghost:
         'text-slate-300 hover:text-white hover:bg-white/8',
 };
 
 const BASE =
-    'group inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-sm px-7 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-3 select-none';
+    'group inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-lg px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-3 select-none';
 
 export default function Button(props: ButtonProps) {
     const { variant = 'primary', className = '', children, dark: darkProp, ...rest } = props;
